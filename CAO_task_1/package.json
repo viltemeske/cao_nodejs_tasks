@@ -1,0 +1,10 @@
+{
+    "name": "CAO task 1",
+    "version": "",
+    "scripts": {
+        "start": "node index.js"
+    },
+    "dependencies": {
+        "casual": "^1.6.2"
+    }
+}

@@ -1,0 +1,36 @@
+{
+	"info": {
+		"_postman_id": "d79cc512-0b41-4fa0-823d-f80de595c0b7",
+		"name": "cars_task_4_1",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25198556"
+	},
+	"item": [
+		{
+			"name": "brands",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/cars/:brand",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"cars",
+						":brand"
+					],
+					"variable": [
+						{
+							"key": "brand",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

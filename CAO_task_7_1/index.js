@@ -2,12 +2,11 @@
 const express = require('express');
 const cors = require('cors');
 const { MongoClient } = require('mongodb');
-
-const URI = 'mongodb+srv://meshkenai:evilvilte88@vm.qivraim.mongodb.net/demo1?retryWrites=true&w=majority';
-
-const client = new MongoClient(URI);
-
 require('dotenv').config();
+
+const url = process.env.URI;
+
+const client = new MongoClient(url);
 
 const port = process.env.PORT || 8082;
 
@@ -36,6 +35,7 @@ app.post('/', async (req, res) => {
   try {
     const con = await client.connect();
     const dbRes = await con.db('demo1').collection('task 7_1').insertOne(person);
+
     await con.close();
     return res.send(dbRes);
   } catch (err) {

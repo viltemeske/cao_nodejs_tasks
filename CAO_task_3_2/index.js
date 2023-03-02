@@ -4,7 +4,6 @@ const path = require("path");
 const fullNames = ["Petras Petraitis"];
 
 const app = express();
-app.use(express.json());
 app.use(express.static(path.join("public")));
 app.use(express.urlencoded({extended: true})); 
 

@@ -21,7 +21,7 @@ const person = {
 app.use(cors());
 app.use(express.json());
 
-app.get('/', async (req, res) => {
+app.get('/people', async (req, res) => {
   try {
     const con = await client.connect();
     const data = await con.db('demo2').collection('people').find().toArray();
@@ -32,7 +32,7 @@ app.get('/', async (req, res) => {
   }
 });
 
-app.post('/', async (req, res) => {
+app.post('/people', async (req, res) => {
   try {
     const con = await client.connect();
     const dbRes = await con.db('demo2').collection('people').insertOne(person);

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/dark.css">
+    <title>Pets system</title>
+</head>
+
+<style>
+    button.selected {
+        background: rgb(68, 68, 184);
+    }
+</style>
+
+<body>
+    <a href="./add.html">Add pet</a>
+    <h1>Pets</h1>
+    <button class="selected">Dog</button>
+    <button class="selected">Cat</button>
+    <button class="selected">Bunny</button>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th id="age">Age(Asc)</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <script>
+        let orderSelection = "asc";
+        let petSelection = ["dog", "cat", "bunny"];
+
+        function dataDisplay(data) {
+            const table = document.querySelector("tbody");
+            table.innerHTML = "";
+
+            data.forEach((pet) => {
+                const tr = table.insertRow();
+
+                const td1 = tr.insertCell();
+                td1.textContent = pet.name;
+
+                const td2 = tr.insertCell();
+                td2.textContent = pet.type;
+
+                const td3 = tr.insertCell();
+                td3.textContent = pet.age;
+            });
+        }
+
+        function getData() {
+            fetch(
+                `http://localhost:8085/pets/${petSelection.join(
+                    ","
+                    )}/${orderSelection}`
+            )
+            .then((res) => res.json())
+            .then((data) => dataDisplay(data));
+        }
+
+        getData();
+
+        document.getElementById("age").addEventListener("click", (e) => {
+            const text = e.target.textContent;
+            if (text.includes("Asc")) {
+                e.target.textContent = text.replace("Asc", "Dsc");
+                orderSelection = "dsc";
+            } else {
+                e.target.textContent = text.replace("Dsc", "Asc");
+                orderSelection = "asc";
+            }
+
+            getData();
+        });
+
+        document.querySelectorAll("button").forEach((button) =>
+            button.addEventListener("click", (e) => {
+                e.target.classList.toggle("selected");
+                const petClicked = e.target.textContent.toLowerCase();
+
+                if (petSelection.includes(petClicked)) {
+                    petSelection = petSelection.filter(
+                        (petStored) => petStored !== petClicked
+                    );
+                } else {
+                    petSelection.push(petClicked);
+                }
+
+                getData();
+            })
+        );
+    </script>
+</body>
+
+</html>

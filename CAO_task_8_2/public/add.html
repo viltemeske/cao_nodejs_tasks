@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/dark.css">
+    <title>Add pet</title>
+</head>
+
+<body>
+    <a href="./index.html">View pets</a>
+    <h1>Add pet</h1>
+    <form method="post" id="form">
+        <label for="name" id="name">Name:</label>
+        <br>
+        <input type="text" id="name" name="name">
+        <label for="age" id="age">Age:</label>
+        <br>
+        <input type="number" id="age" name="age">
+        <label for="type">Select:</label>
+        <br>
+        <select type="text" name="type" id="type">
+            <option value="dog">Dog</option>
+            <option value="cat">Cat</option>
+            <option value="bunny">Bunny</option>
+        </select>
+        <button type="submit">Add</button>
+    </form>
+
+    <script>
+        document.forms[0].addEventListener("submit", (e) => {
+            e.preventDefault();
+         
+            const name = e.target.elements.name.value.trim();
+            const age = Number(e.target.elements.age.value);
+            const type = e.target.elements.type.value;
+           
+            fetch("http://localhost:8085/pets", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ name, age, type })
+            })
+                .then((res) => res.json())
+                .then((data) => console.log(data));
+        });
+    </script>
+</body>
+
+</html>

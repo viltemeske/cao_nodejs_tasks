@@ -50,25 +50,12 @@ app.post('/pets', async (req, res) => {
 });
 
 // 3. GET by type - paduoda įrašyto tipo gyvūnus
-
-app.get('/pets/:type', async (req, res) => {
-  try {
-    const con = await client.connect();
-    const data = await con.db('demo3').collection('pets').find({ type: 'dog' }).toArray();
-    await con.close();
-    return res.send(data);
-  } catch (err) {
-    res.status(500).send({ err });
-  }
-});
-
 // 4. Get by age descending - pagal amžių nuo seniausio iki jauniausio
 
 app.get('/pets/byoldest', async (req, res) => {
   try {
     const con = await client.connect();
-    const mySort = { age: -1 };
-    const data = await con.db('demo3').collection('pets').find().sort(mySort)
+    const data = await con.db('demo3').collection('pets').find({ type: 'cat' }).sort({ age: -1 })
       .toArray();
     await con.close();
     return res.send(data);

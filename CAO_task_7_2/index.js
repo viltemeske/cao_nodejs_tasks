@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable consistent-return */
 const express = require('express');
 const cors = require('cors');
@@ -11,12 +12,6 @@ const client = new MongoClient(url);
 const port = process.env.PORT || 8083;
 
 const app = express();
-
-const person = {
-  name: 'Vardenis',
-  surname: 'Pavardenis',
-  age: 15,
-};
 
 app.use(cors());
 app.use(express.json());
@@ -35,8 +30,7 @@ app.get('/people', async (req, res) => {
 app.post('/people', async (req, res) => {
   try {
     const con = await client.connect();
-    const dbRes = await con.db('demo2').collection('people').insertOne(person);
-
+    const dbRes = await con.db('demo2').collection('people').insertOne(req.body);
     await con.close();
     return res.send(dbRes);
   } catch (err) {

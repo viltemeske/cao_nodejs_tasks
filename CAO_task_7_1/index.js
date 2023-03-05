@@ -13,11 +13,6 @@ const port = process.env.PORT || 8082;
 
 const app = express();
 
-const person = {
-  name: 'Petras',
-  surname: 'Slekys',
-};
-
 app.use(cors());
 app.use(express.json());
 
@@ -35,8 +30,7 @@ app.get('/', async (req, res) => {
 app.post('/', async (req, res) => {
   try {
     const con = await client.connect();
-    const dbRes = await con.db('demo1').collection('task 7_1').insertOne(person);
-
+    const dbRes = await con.db('demo1').collection('task 7_1').insertOne(req.body);
     await con.close();
     return res.send(dbRes);
   } catch (err) {

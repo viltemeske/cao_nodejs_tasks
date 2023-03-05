@@ -13,21 +13,21 @@ const port = process.env.PORT || 8084;
 
 const app = express();
 
-const pet = {
-  name: 'Aitvaras',
-  type: 'horse',
-  age: 27,
-};
-
 app.use(cors());
 app.use(express.json());
 
 // 1. paduoda visus gyvūnus
+// 4. Get by age descending - pagal amžių nuo seniausio iki jauniausio
 
 app.get('/pets', async (req, res) => {
   try {
     const con = await client.connect();
-    const data = await con.db('demo3').collection('pets').find().toArray();
+    const data = await con
+      .db('demo3')
+      .collection('pets')
+      .find()
+      // .sort({ age: -1 })
+      .toArray();
     await con.close();
     return res.send(data);
   } catch (err) {
@@ -40,8 +40,7 @@ app.get('/pets', async (req, res) => {
 app.post('/pets', async (req, res) => {
   try {
     const con = await client.connect();
-    const dbRes = await con.db('demo3').collection('pets').insertOne(pet);
-
+    const dbRes = await con.db('demo3').collection('pets').insertOne(req.body);
     await con.close();
     return res.send(dbRes);
   } catch (err) {
@@ -50,12 +49,14 @@ app.post('/pets', async (req, res) => {
 });
 
 // 3. GET by type - paduoda įrašyto tipo gyvūnus
-// 4. Get by age descending - pagal amžių nuo seniausio iki jauniausio
 
-app.get('/pets/byoldest', async (req, res) => {
+app.get('/pets/:type', async (req, res) => {
   try {
     const con = await client.connect();
-    const data = await con.db('demo3').collection('pets').find({ type: 'cat' }).sort({ age: -1 })
+    const data = await con
+      .db('demo3')
+      .collection('pets')
+      .find({ type: req.params.type })
       .toArray();
     await con.close();
     return res.send(data);

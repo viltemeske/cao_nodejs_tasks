@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User management</title>
+    <script src="./users-page.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/51b8caf964.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a href="./index.html">Membership</a>
+            <a href="./users-page.html" class="active">Users</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        <div class="topbar">
+            <div class="description">
+                <h1>User Management</h1>
+            </div>
+            <div>
+                <button class="add-button" id="add">
+                    <span class="plus">+</span>New User
+                </button>
+            </div>
+        </div>
+        <div class="select-order">
+            <h3 id="name">Sorting By Name: ASC</h3>
+        </div>
+        <div class="cards"></div>
+    </main>
+    <footer>
+        <p>Copyright &copy 2023 Membership Manager</p>
+    </footer>
+</body>
+
+</html>

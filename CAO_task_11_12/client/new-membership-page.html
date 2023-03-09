@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Membership</title>
+    <script src="./new-membership-page.js" defer></script>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a href="./index.html" class="active">Membership</a>
+            <a href="./users-page.html">Users</a>
+        </nav>
+    </header>
+    <main class="container">
+        <h2>Create Membership</h2>
+        <form class="signup-form" method="post">
+            <div class="form-body">
+                <div class="input-container">
+                    <label for="name">Name</label>
+                    <input type="text" name="name" placeholder="Name" required="required">
+                </div>
+                <div class="input-container">
+                    <label for="membership">Price</label>
+                    <input type="text" name="membership" placeholder=" $ Membership Price" required="required">
+                </div>
+                <div class="input-container">
+                    <label for="description">Description</label>
+                    <textarea type="text" name="description" maxlength="30" required="required"></textarea>
+                </div>
+            </div>
+                <div class="form-footer">
+                    <button id="return" class="cancel-button">Cancel</button>
+                    <button class="add-button" type="submit">Create</button>
+                </div>
+        </form>
+
+    </main>
+    <footer>
+        <p>Copyright &copy 2023 Membership Manager</p>
+    </footer>
+</body>
+
+</html>

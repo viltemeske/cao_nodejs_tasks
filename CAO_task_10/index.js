@@ -2,7 +2,7 @@
 /* eslint-disable consistent-return */
 const express = require('express');
 const cors = require('cors');
-const { MongoClient } = require('mongodb');
+const { MongoClient, ObjectId } = require('mongodb');
 require('dotenv').config();
 
 const port = process.env.PORT || 8087;
@@ -13,11 +13,6 @@ app.use(express.json());
 
 const url = process.env.URI;
 const client = new MongoClient(url);
-
-const user = {
-  name: 'Peter Rabbit',
-  email: 'bunny@carrotlowers.com',
-};
 
 app.get('/', (req, res) => {
   res.send({ msg: 'success' });
@@ -70,7 +65,7 @@ app.get('/comments', async (req, res) => {
             _id: 0,
             date: 1,
             comment: 1,
-            username: '$userinfo.name',
+            username: { name: '$userinfo.name', id: '$userinfo._id' },
           },
         },
       ])
@@ -88,7 +83,7 @@ app.delete('/comments/:_id', async (req, res) => {
     const data = await con
       .db('demo6')
       .collection('comments')
-      .deleteOne();
+      .deleteOne({ _id: ObjectId(req.params.id) });
     await con.close();
     return res.send(data);
   } catch (err) {

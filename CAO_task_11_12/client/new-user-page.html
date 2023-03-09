@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Membership</title>
+    <script src="./new-user-page.js" defer></script>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a href="./index.html">Membership</a>
+            <a href="./users-page.html" class="active">Users</a>
+        </nav>
+    </header>
+    <main class="container">
+        <h2>Create User</h2>
+        <form class="signup-form" method="post">
+            <div class="form-body">
+                <div class="horizontal-group">
+                    <div class="form-group left">
+                        <label for="firstname" class="label-title">First name *</label>
+                        <input type="text" id="firstname" name="name" class="form-input"
+                            placeholder="enter your first name" required="required" />
+                    </div>
+                    <div class="form-group right">
+                        <label for="lastname" class="label-title">Last name *</label>
+                        <input type="text" id="lastname" name="surname" class="form-input"
+                            placeholder="enter your last name" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email" class="label-title">Email Address *</label>
+                    <input type="email" id="email" name="email" class="form-input" placeholder="enter your email"
+                        required="required">
+                </div>
+                <div class="horizontal-group">
+                    <div class="form-group left">
+                        <label class="label-title">Change Membership</label>
+                        <select class="form-input" id="membership" name="membership" type="text">
+                            <option value="6406fbcd8ea3b692bb47d7cf">Trial</option>
+                            <option value="640672d8bab634c349fb263a">Bronze</option>
+                            <option value="640672b9bab634c349fb2639">Silver</option>
+                            <option value="640672e9bab634c349fb263b">Gold</option>
+                            <option value="6406731cbab634c349fb263c">Platinum</option>
+                        </select>
+                    </div>
+                    <div class="form-footer">
+                        <button id="return" class="cancel-button">Cancel</button>
+                        <button class="add-button" type="submit">Add User</button>
+                    </div>
+        </form>
+    </main>
+    <footer>
+        <p>Copyright &copy 2023 Membership Manager</p>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+{
+	"info": {
+		"_postman_id": "d7cf5bf4-5c67-46b0-89ee-fd61795c0621",
+		"name": "mongo db 8_2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25198556"
+	},
+	"item": [
+		{
+			"name": "single",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8085/pets",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8085",
+					"path": [
+						"pets"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,91 @@
+{
+	"info": {
+		"_postman_id": "056c3f17-012c-4f2f-913c-489d1bae7dae",
+		"name": "Shirts_cao_14",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25198556"
+	},
+	"item": [
+		{
+			"name": "all",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{address}}/shirt",
+					"host": [
+						"{{address}}"
+					],
+					"path": [
+						"shirt"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "all by size",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{address}}/shirt/:size?&size=M&limit=10",
+					"host": [
+						"{{address}}"
+					],
+					"path": [
+						"shirt",
+						":size"
+					],
+					"query": [
+						{
+							"key": null,
+							"value": null
+						},
+						{
+							"key": "size",
+							"value": "M"
+						},
+						{
+							"key": "limit",
+							"value": "10"
+						}
+					],
+					"variable": [
+						{
+							"key": "size",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "one",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"brand\": \"Brand New\",\r\n    \"model\": \"round-neck\",\r\n    \"size\": \"M\",\r\n    \"price\": 9.99\r\n    \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{address}}/shirt",
+					"host": [
+						"{{address}}"
+					],
+					"path": [
+						"shirt"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

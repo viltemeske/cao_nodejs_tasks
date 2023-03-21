@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add new car</title>
+    <script src="./add.js" defer></script>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a href="./index.html">CARS</a>
+            <a href="./add.html" class="active">ADD CAR</a>
+        </nav>
+    </header>
+    <main class="container">
+        <h2>Add new car</h2>
+        <form class="signup-form" method="post">
+            <div class="form-body">
+                <div class="input-container">
+                    <label for="name">Numberplates:</label>
+                    <input type="text" name="numberplate" placeholder="Numberplates" required="required">
+                </div>
+                <div class="input-container">
+                    <label for="name">Model:</label>
+                    <input type="text" name="model" placeholder="Model" required="required">
+                </div>
+                <div class="input-container">
+                    <label for="membership">Price:</label>
+                    <input type="text" name="price" placeholder="Price €" required="required">
+                </div>
+                <div class="input-container">
+                    <label for="membership">Image:</label>
+                    <input type="text" name="image" placeholder="Image src" required="required">
+                </div>
+            </div>
+                <div class="form-footer">
+                    <button id="return" class="button">CANCEL</button>
+                    <button class="button" type="submit">ADD</button>
+                </div>
+        </form>
+
+    </main>
+    <footer>
+        <p>Copyright &copy 2023 Car Manager</p>
+    </footer>
+</body>
+
+</html>
